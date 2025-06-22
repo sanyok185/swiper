@@ -144,9 +144,6 @@ body {
   border-radius: 1.25rem;
   border: 0.0625rem solid var(--Main-Grey_line, #f3f3fa);
   width: 100%;
-  /* .swiper-slide__rating */
-  /* .swiper-slide__text */
-  /* .swiper-slide__name */
 }
 .swiper-slide__rating {
   display: flex;
@@ -182,7 +179,7 @@ body {
   background-color: var(--Main-Green, #48af8c);
 }
 
-/* Dim/scale not active cards */
+/* Зменшення та прозорість для неактивних карток */
 .swiper-slide:not(.swiper-slide-active) .card {
   opacity: 0.5;
 }
@@ -194,40 +191,46 @@ body {
   margin-top: 1.25rem;
 }
 
-/* Кожна кнопка пагінації */
+/* Кнопка пагінації */
 .tinyflow-slider__pagination__btn {
   position: relative;
   width: 6.6875rem;
   height: 0.4375rem;
-  background-color: #E8EEDA;
+  background-color: #e8eeda;
   border-radius: 10rem;
-  opacity: 1;
-  overflow: hidden;
   cursor: pointer;
+  overflow: hidden;
 }
-
-/* Прогресбар всередині буліта — НЕ анімується */
 .tinyflow-slider__pagination__btn::after {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
-  width: 0%;
-  background: var(--Main-Green, #48AF8C);
+  width: 0;
+  background: var(--Main-Green, #48af8c);
   border-radius: inherit;
+  transition: none;
+}
+.tinyflow-slider__pagination__btn.swiper-pagination-bullet-active::after {
+  animation: progress 5s linear forwards;
 }
 
-/* Активний буліт — запускає анімацію вперед */
-.tinyflow-slider__pagination__btn.swiper-pagination-bullet-active::after {
-  width: 100%;
-  transition: width 5s linear;
+@keyframes progress {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
 }
+
 @media (max-width: 47.99875em){
   .swiper-slide__text {
     font-size: 0.875rem;
   }
 }
+
 @media (min-width: 48rem){
   .swiper-slide:not(.swiper-slide-active) .card {
     transform: scale(0.9);

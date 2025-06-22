@@ -5135,29 +5135,17 @@ function initSliders() {
       loop: true,
       spaceBetween: 20,
       allowTouchMove: false,
-      // Адаптивна кількість слайдів
       slidesPerView: 1,
       slidesPerGroup: 1,
       breakpoints: {
-        320: {
-          slidesPerView: 1,
-          slidesPerGroup: 1
-        },
-        600: {
-          slidesPerView: 2,
-          slidesPerGroup: 2
-        },
-        992: {
-          slidesPerView: 3,
-          slidesPerGroup: 3
-        }
+        320: { slidesPerView: 1, slidesPerGroup: 1 },
+        600: { slidesPerView: 2, slidesPerGroup: 2 },
+        992: { slidesPerView: 3, slidesPerGroup: 3 }
       },
-      // Автоплей
       autoplay: {
-        delay: 4200,
-        disableOnInteraction: false
+        delay: 5e3,
+        disableOnInteraction: true
       },
-      // Пагінація (прогрес)
       pagination: {
         el: ".tinyflow-slider__pagination",
         clickable: true,
@@ -5165,37 +5153,9 @@ function initSliders() {
           return `<span class="${className} tinyflow-slider__pagination__btn"></span>`;
         }
       },
-      // Стрілки
       navigation: {
         prevEl: ".swiper-button-prev",
         nextEl: ".swiper-button-next"
-      },
-      // Прогрес пагінації (за допомогою CSS var)
-      on: {
-        slideChangeTransitionStart: () => {
-          const bullets = document.querySelectorAll(
-            ".tinyflow-slider__pagination__btn"
-          );
-          bullets.forEach(
-            (el) => el.style.setProperty("--_progress", "0%")
-          );
-        },
-        slideChangeTransitionEnd: () => {
-          const activeBullet = document.querySelector(
-            ".tinyflow-slider__pagination__btn.swiper-pagination-bullet-active"
-          );
-          if (activeBullet) {
-            activeBullet.style.setProperty("--_progress", "100%");
-          }
-        }
-      }
-    });
-    window.addEventListener("load", () => {
-      const activeBullet = document.querySelector(
-        ".tinyflow-slider__pagination__btn.swiper-pagination-bullet-active"
-      );
-      if (activeBullet) {
-        activeBullet.style.setProperty("--_progress", "100%");
       }
     });
   }
