@@ -5147,7 +5147,7 @@ function initSliders() {
           slidesPerView: 2,
           slidesPerGroup: 2
         },
-        800: {
+        992: {
           slidesPerView: 3,
           slidesPerGroup: 3
         }
